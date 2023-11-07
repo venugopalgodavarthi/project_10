@@ -5,10 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
 
+    <script src="{% static 'js/color-modes.js'%}"></script>
+    {% include "partials/_bootcss.html" %}
 </head>
 
 <body>
+    {% block message1 %}
+    {% for msg in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
+    {% endblock %}
+
+
     <div class="header1">
         {% include "partials/_header.html" %}
     </div>

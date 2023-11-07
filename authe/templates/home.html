@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-    <script src="../assets/js/color-modes.js"></script>
+
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,9 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
     <title>Headers · Bootstrap v5.3</title>
+    {% load static %}
 
+    <script src="{% static 'js/color-modes.js'%}"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
 
 
@@ -101,10 +103,19 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="headers.css" rel="stylesheet">
+    <link href="{% static 'css/headers.css' %}" rel="stylesheet">
+    {% include 'partials/_bootjs.html'%}
+
 </head>
 
 <body>
+    {% block message1 %}
+    {% for msg in messages %}
+    <div class="alert alert-success" role="alert">
+        {{msg}}
+    </div>
+    {% endfor %}
+    {% endblock %}
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path
@@ -257,7 +268,6 @@
         </header>
         </h1>
     </main>
-    {% include 'partials/_bootjs.html'%}
 
 
 </body>

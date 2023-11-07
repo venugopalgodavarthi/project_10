@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+
+{% block center %}
+<form action="" method="post">
+    {%csrf_token%}
+    <label for="id_otp">ONE-TIME-PASSWORD</label>
+    <input type="number" name="otp" id="id_otp">
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock center %}

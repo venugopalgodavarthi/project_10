@@ -5,18 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="{%static 'boot/js/bootstrap.bundle.js'}"></script>
-    <script src="{%static 'boot/js/bootstrap.bundle.min.js'}"></script>
+    {% load static %}
 
-    <script src="{%static 'boot/js/bootstrap.esm.js'}"></script>
-    <script src="{%static 'boot/js/bootstrap.esm.min.js'}"></script>
-
-    <script src="{%static 'boot/js/bootstrap.js'}"></script>
-    <script src="{%static 'boot/js/bootstrap.min.js'}"></script>
 </head>
 
 <body>
+    <script src="{%static 'boot/js/bootstrap.bundle.js' %}"></script>
+    <script src="{%static 'boot/js/bootstrap.bundle.min.js' %}"></script>
 
+    <script src="{%static 'boot/js/bootstrap.esm.js' %}"></script>
+    <script src="{%static 'boot/js/bootstrap.esm.min.js' %}"></script>
+
+    <script src="{%static 'boot/js/bootstrap.js' %}"></script>
+    <script src="{%static 'boot/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>
