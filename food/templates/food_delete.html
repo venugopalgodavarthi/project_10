@@ -1,0 +1,12 @@
+{% extends 'items_create.html'%}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h2>Are You Sure To Delete</h2>
+    <h3>Food No: {{res.fid}} </h3>
+    <h3>Food Name: {{res.f_name}}</h3>
+    <button class="btn btn-primary w-45 py-2" type="submit">Delete</button>
+    <a href="{%url 'food:food_create' %}" class="btn btn-success w-45 py-2" type="submit">Create Food</a>
+</form>
+{% endblock %}

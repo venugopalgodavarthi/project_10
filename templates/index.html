@@ -9,9 +9,13 @@
 
     <script src="{% static 'js/color-modes.js'%}"></script>
     {% include "partials/_bootcss.html" %}
+    {% block time %}
+    {% endblock time %}
 </head>
 
 <body>
+
+
     {% block message1 %}
     {% for msg in messages %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">

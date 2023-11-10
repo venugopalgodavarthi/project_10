@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block message1 %}
+    {% if messages %}
+    {% for msg in messages %}
+    <div class="alert alert-warning" role="alert">
+        {{msg}}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% endblock %}
+
+
+
+    {%if data %}
+    <table border="2">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Remove_item
+            </th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>
+                {{i.0.f_name}}
+            </td>
+            <td>
+                {{i.0.f_quantity}}
+            </td>
+            <td>
+                {{i.0.f_price}}
+            </td>
+            <td>
+                <a href="{% url 'food:remove_food' pk=i.1 %}"> <button>Remove</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{%url 'food:checkout_food'%}"><button class="bn btn-primary">Items Book</button></a>
+    {% else %}
+    <h1>cart is empty</h1>
+    {% endif %}
+
+</body>
+
+</html>

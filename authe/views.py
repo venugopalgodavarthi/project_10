@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
 import random
+import time
 from django.contrib import messages
 
 # Create your views here.
@@ -63,13 +64,13 @@ def otp_view(request):
             messages.success(request, "Login success")
             return redirect('/authe/home')
         else:
+            messages.warning(request, "otp incorrect")
             return redirect('/authe/otp')
     return render(request=request, template_name='otp.html')
 
 
 @login_required(login_url='/authe/login')
 def home_view(request):
-    print(request.user.id)
     res = register_model.objects.get(id=request.user.id)
     return render(request=request, template_name="home.html", context={'res': res})
 

@@ -16,6 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+FOOD_STATIC_DIRS = os.path.join(os.path.join(BASE_DIR, 'food'), 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Quick-start development settings - unsuitable for production
@@ -38,8 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 'authe'
+    'django.contrib.staticfiles', 'authe', 'food', "crispy_forms",
+    "crispy_bootstrap5",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,7 +127,7 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = 'media/'
 
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [FOOD_STATIC_DIRS]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

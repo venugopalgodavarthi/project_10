@@ -22,7 +22,8 @@ from pro10.views import index_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(route='authe/', view=include('authe.urls')),
-    path(route='', view=index_view, name="index")
+    path(route='', view=index_view, name="index"),
+    path(route='food/', view=include('food.urls'), name="food"),
 ]
 
 if settings.DEBUG:
