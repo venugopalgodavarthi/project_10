@@ -134,6 +134,12 @@
             <button class="btn btn-primary w-45 py-2" type="submit">Create</button>
         </form>
         {% endblock %}
+        <br>
+        </form>
+        <div>
+            <a href="{%url 'food:food_list' %}" class="btn btn-primary w-45 py-2">FOOD LIST</a>
+            <a href="{%url 'authe:admin_home' %}" class="btn btn-info w-45 py-2">HOME Page</a>
+        </div>
     </main>
     {% include 'partials/_bootjs.html' %}
 

@@ -7,11 +7,13 @@ from django.db.models import Sum, Count
 # Create your views here.
 
 
+@login_required(login_url='/authe/login')
 def album_view(request):
     res = food_items.objects.all()
     return render(request=request, template_name='album.html', context={'res': res})
 
 
+@login_required(login_url='/authe/login')
 def create_item_view(request):
     res = menu_items.objects.all()
     form = menu_items_form()
@@ -25,6 +27,7 @@ def create_item_view(request):
     return render(request=request, template_name='items_create.html', context={'form': form, 'res': res})
 
 
+@login_required(login_url='/authe/login')
 def update_item_view(request, pk):
     res = menu_items.objects.get(mid=pk)
     form = menu_items_form(instance=res)
@@ -37,6 +40,7 @@ def update_item_view(request, pk):
     return render(request=request, template_name='item_update.html', context={'form': form})
 
 
+@login_required(login_url='/authe/login')
 def delete_item_view(request, pk):
     res = menu_items.objects.get(mid=pk)
     if request.method == 'POST':
@@ -45,6 +49,7 @@ def delete_item_view(request, pk):
     return render(request=request, template_name='item_delete.html', context={'res': res})
 
 
+@login_required(login_url='/authe/login')
 def create_food_view(request):
     form = food_items_form()
     if request.method == 'POST':
@@ -52,14 +57,17 @@ def create_food_view(request):
         form = food_items_form(request.POST, request.FILES)
         if form.is_valid:
             form.save()
+            return redirect('/food/food_list')
     return render(request=request, template_name='food_create.html', context={'form': form})
 
 
+@login_required(login_url='/authe/login')
 def list_food_view(request):
     res = food_items.objects.all()
     return render(request=request, template_name='food_list.html', context={'res': res})
 
 
+@login_required(login_url='/authe/login')
 def update_food_view(request, pk):
     res = food_items.objects.get(fid=pk)
     form = food_items_form(instance=res)
@@ -68,18 +76,20 @@ def update_food_view(request, pk):
         form = food_items_form(request.POST, request.FILES, instance=res)
         if form.is_valid:
             form.save()
-            return redirect('/food/food_create')
+            return redirect('/food/food_list')
     return render(request=request, template_name='food_update.html', context={'form': form})
 
 
+@login_required(login_url='/authe/login')
 def delete_food_view(request, pk):
     res = food_items.objects.get(fid=pk)
     if request.method == 'POST':
         res = food_items.objects.get(fid=pk).delete()
-        return redirect('/food/food_create')
+        return redirect('/food/food_list')
     return render(request=request, template_name='food_delete.html', context={'res': res})
 
 
+@login_required(login_url='/authe/login')
 def cart_add(request, cust, food):
     cart_items.objects.create(cust_id=cust, food_id=food)
     messages.success(request, "Item is added")
@@ -103,6 +113,7 @@ def remove_food(request, pk):
     return redirect('/food/cart_list')
 
 
+@login_required(login_url='/authe/login')
 def checkout_food(request):
     res = cart_items.objects.filter(
         cust_id=request.user.id).values_list('food_id')
